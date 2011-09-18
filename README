@@ -1,0 +1,23 @@
+If you're like me, when put on stage, you might sometimes lose track of time - well here's your solution!
+
+PresoTimer!
+
+It'll draw a very subtle clock in the upper left hand corner of the screen indicating how much time left until either your session starts, or until it's over.  It'll keep track of the time until start, and then once the session starts, it'll count down the time until the end.
+
+To use it, you can do it in two ways...
+
+QUICK & EASY - Starts the timer immediately, and does a count down of 10 minutes
+  var t = PresentationTimer(10, true);
+ 
+EASY - Sets the timer up and waits for you to start it
+  var t = PresentationTimer(10, false);
+ 
+FULL POWER - Starts the timer at the time specified for the length specified and provides a visual warning at X minutes
+  window.timerConfig = window.timerConfig || {
+    settings : {
+      date: new Date('Sept 18 2011 16:22'),
+      minutes: 10,
+      warnAt: 2
+    }
+  };
+  var t = PresentationTimer();
