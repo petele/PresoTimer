@@ -21,3 +21,8 @@ FULL POWER - Starts the timer at the time specified for the length specified and
     }
   };
   var t = PresentationTimer();
+  
+  
+  
+CHANGE LOG
+2011-09-20: added support to hide the clock 10 minutes after the presentation finishes.

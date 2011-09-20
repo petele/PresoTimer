@@ -12,6 +12,10 @@
       opacity: 1.0;
     }
     
+    #cClock.hidden {
+      display: none;
+    }
+    
     window.timerConfig = window.timerConfig || {
       settings : {
         date: new Date('Sept 18 2011 16:22'),
@@ -66,7 +70,13 @@ var PresentationTimer = function(minutes, startImmediately) {
       setTimeout(timerTick, tickLength);
     } else if (currentTime > stopTime) {
       //console.log("after");
-      drawClock(0, "#f00");
+      var minOver = (currentTime.getTime() - stopTime.getTime()) / 1000 / 60;
+      if (minOver <= 10) {
+        drawClock(Math.ceil(minOver), "#f00");
+        setTimeout(timerTick, 15000);
+      } else {
+        showClock(false);
+      }
     } else {
       //console.log("during");
       minLeft = (stopTime.getTime() - currentTime.getTime()) / 1000 / 60;
@@ -93,6 +103,15 @@ var PresentationTimer = function(minutes, startImmediately) {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(min, 15, 15);
+  }
+  
+  var showClock = function(visible) {
+    var canvas = document.getElementById("cClock");
+    if (visible) {
+      canvas.classList.remove("hidden");  
+    } else {
+      canvas.classList.add("hidden");
+    }
   }
   
   var toRadians = function(val) {

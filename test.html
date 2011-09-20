@@ -21,6 +21,10 @@
     #cClock:hover {
       opacity: 1.0;
     }
+    
+    #cClock.hidden {
+      display: none;
+    }
 
 	</style>
 </head>
@@ -29,7 +33,8 @@
   <script src="config.js"></script>
   <script src="timer.js"></script>
   <script type="text/javascript">
-    var t = PresentationTimer(10, true);
+    var t = PresentationTimer();
+    t.start();
   </script>
 </body>
 </html>
